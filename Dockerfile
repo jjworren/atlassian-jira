@@ -41,7 +41,7 @@ RUN mv "/tmp/mysql-connector-java-5.1.34/mysql-connector-java-5.1.34-bin.jar" \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Dirs
-VOLUME["/var/atlassian/jira"]
+VOLUME ["/var/atlassian/jira"]
 
 # Start jira
 ENTRYPOINT ${JIRA_INSTALL}/atlassian-jira-${JIRA_VERSION}/bin/start-jira.sh -fg
