@@ -8,7 +8,7 @@ FROM phusion/baseimage:latest
 MAINTAINER Jan Kubat "jan.kubat@release.cz"
 
 # Set environment 
-ENV JIRA_VERSION 6.3.15
+ENV JIRA_VERSION 6.4.1
 ENV JIRA_INSTALL /opt/atlassian/jira
 ENV JIRA_HOME    /var/atlassian/jira
 
