@@ -13,7 +13,7 @@ ENV JIRA_INSTALL /opt/atlassian/jira
 ENV JIRA_HOME    /var/atlassian/jira
 
 # Expose ports
-EXPOSE 8085
+EXPOSE 8080
 
 # Update system
 RUN apt-get update && apt-get upgrade --yes
