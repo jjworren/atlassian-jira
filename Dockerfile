@@ -3,7 +3,7 @@
 # Based on phusion/baseimage image
 ############################################################
 
-FROM phusion/baseimage:latest
+FROM jjworren/base:latest
 
 MAINTAINER Jan Kubat "jan.kubat@release.cz"
 
