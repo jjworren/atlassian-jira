@@ -8,7 +8,7 @@ FROM jjworren/base:latest
 MAINTAINER Jan Kubat "jan.kubat@release.cz"
 
 # Set environment 
-ENV JIRA_VERSION 6.4.6
+ENV JIRA_VERSION 6.4.8
 ENV JIRA_INSTALL /opt/atlassian/jira
 ENV JIRA_HOME    /var/atlassian/jira
 
