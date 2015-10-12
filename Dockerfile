@@ -3,12 +3,12 @@
 # Based on phusion/baseimage image
 ############################################################
 
-FROM jjworren/base:latest
+FROM ubuntu:latest
 
 MAINTAINER Jan Kubat "jan.kubat@release.cz"
 
 # Set environment 
-ENV JIRA_VERSION 6.4.8
+ENV JIRA_VERSION 7.0.0
 ENV JIRA_INSTALL /opt/atlassian/jira
 ENV JIRA_HOME    /var/atlassian/jira
 
@@ -22,14 +22,14 @@ RUN apt-get update && apt-get upgrade --yes
 RUN apt-get install --yes wget
 
 # Install JDK 7 and VCS tools //thanks to hwuethrich/bamboo-server
-RUN apt-get install -yq python-software-properties && add-apt-repository ppa:webupd8team/java -y && apt-get update
+RUN apt-get install -yq software-properties-common && add-apt-repository ppa:webupd8team/java -y && apt-get update
 RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN apt-get install -yq oracle-java7-installer git subversion
 
 # download and extract jira
 RUN mkdir -p "${JIRA_INSTALL}"
-RUN wget -qO- "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-${JIRA_VERSION}.tar.gz" | tar -xz --directory="${JIRA_INSTALL}"
-RUN mv "${JIRA_INSTALL}/atlassian-jira-${JIRA_VERSION}-standalone" "${JIRA_INSTALL}/atlassian-jira-${JIRA_VERSION}"
+RUN wget -qO- "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.0.0-jira-${JIRA_VERSION}.tar.gz" | tar -xz --directory="${JIRA_INSTALL}"
+RUN mv "${JIRA_INSTALL}/atlassian-jira-software-${JIRA_VERSION}-standalone" "${JIRA_INSTALL}/atlassian-jira-${JIRA_VERSION}"
 RUN echo "set jira.home = ${JIRA_HOME}" > "${JIRA_INSTALL}/atlassian-jira-${JIRA_VERSION}/atlassian-jira/WEB-INF/classes/jira-application.properties"
 
 # Download and install mysql jdbc driver
