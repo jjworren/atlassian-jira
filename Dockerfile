@@ -3,7 +3,7 @@
 # Based on phusion/baseimage image
 ############################################################
 
-FROM ubuntu:latest
+FROM jjworren/docker-base:jessie
 
 MAINTAINER Jan Kubat "jan.kubat@release.cz"
 
@@ -22,9 +22,15 @@ RUN apt-get update && apt-get upgrade --yes
 RUN apt-get install --yes wget
 
 # Install JDK 7 and VCS tools //thanks to hwuethrich/bamboo-server
-RUN apt-get install -yq software-properties-common && add-apt-repository ppa:webupd8team/java -y && apt-get update
-RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-RUN apt-get install -yq oracle-java7-installer git subversion
+#RUN apt-get install -yq software-properties-common && add-apt-repository ppa:webupd8team/java -y && apt-get update
+RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+#RUN apt-get install -yq oracle-java7-installer git subversion
+
+RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+RUN apt-get update
+RUN apt-get install -y oracle-java8-installer
 
 # download and extract jira
 RUN mkdir -p "${JIRA_INSTALL}"
