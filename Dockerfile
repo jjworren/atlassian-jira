@@ -8,7 +8,7 @@ FROM jjworren/docker-base:jessie
 MAINTAINER Jan Kubat "jan.kubat@release.cz"
 
 # Set environment 
-ENV JIRA_VERSION 7.0.0
+ENV JIRA_VERSION 7.0.5
 ENV JIRA_INSTALL /opt/atlassian/jira
 ENV JIRA_HOME    /var/atlassian/jira
 
